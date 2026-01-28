@@ -1,8 +1,12 @@
-numpy
 pandas
+numpy
 matplotlib
 seaborn
 scikit-learn
 mlflow
-notebook
+torch
+torchvision
+onnxruntime
+flask
 joblib
+jupyter

@@ -1,92 +1,88 @@
-# TPs de Machine Learning - 4GI
+# 🧠 Machine Learning Labs (4GI)
 
-Ce dépôt contient les travaux pratiques (TPs) réalisés dans le cadre du module de Machine Learning. Il couvre le pipeline complet de Machine Learning, de l'exploration des données à la mise en production (MLOps), en passant par la régression et le clustering.
+Welcome to the collection of Machine Learning lab sessions. This repository guides you through the full ML lifecycle: from data preparation and regression to clustering and deep learning for medical imaging.
 
-## Contenu du Projet
+---
 
-Le projet est structuré en trois notebooks principaux :
+## ⚡ Quick Start
 
-*   **`TP1.ipynb` - Pipeline Machine Learning & Data Processing** :
-    *   Introduction au pipeline ML.
-    *   Collecte, description et résumé des données.
-    *   Nettoyage et préparation des données (Data Wrangling).
-    *   Visualisation des données (Data Visualization).
+**Prerequisites:** You need [Python 3.9+](https://www.python.org/downloads/) and [Git](https://git-scm.com/) installed.
 
-*   **`TP2.ipynb` - Régression & MLOps** :
-    *   Régression Linéaire (OLS, Descente de Gradient).
-    *   Compromis Biais-Variance.
-    *   Régularisation (Ridge, Lasso) et optimisation des hyperparamètres.
-    *   **MLOps** : Tracking des expériences avec **MLflow**, packaging de modèle, et containerisation avec **Docker**.
+**1. Clone the repository**
+```bash
+git clone git@github.com:Nate-n23/TPs-de-ML_4GI.git
+cd TPs-de-ML_4GI
+```
 
-*   **`TP3.ipynb` - Clustering & Analyse Non-Supervisée** :
-    *   Algorithmes de clustering : **K-Means** et **GMM (Gaussian Mixture Models)**.
-    *   Optimisation : Méthode du Coude (Elbow Method), Coefficient de Silhouette.
-    *   Cas d'usage : Segmentation client.
-    *   Intégration MLOps pour le clustering.
+**2. Setup Environment** (Recommended)
+```bash
+# Verify you have python 3.9+
+python3 --version
 
-## Prérequis
+# Create a virtual environment to keep your system clean
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 
-*   **Python 3.9+**
-*   **pip** (gestionnaire de paquets Python)
+# Install all dependencies at once
+pip install -r requirements.txt
+```
 
-## Installation
-
-Pour exécuter les notebooks sur votre machine locale, suivez ces étapes :
-
-1.  **Cloner le dépôt :**
-
-    ```bash
-    git clone <URL_DU_DEPOT>
-    cd <NOM_DU_DOSSIER>
-    ```
-
-2.  **Créer un environnement virtuel (recommandé) :**
-
-    ```bash
-    # Création de l'environnement
-    python -m venv venv
-
-    # Activation de l'environnement
-    # Sur Linux/MacOS :
-    source venv/bin/activate
-    # Sur Windows :
-    # venv\Scripts\activate
-    ```
-
-3.  **Installer les dépendances :**
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-## Utilisation
-
-Une fois les dépendances installées et l'environnement activé, vous pouvez lancer Jupyter Notebook pour explorer les TPs :
-
+**3. Run the Labs**
+Start Jupyter Lab/Notebook to explore the `.ipynb` files:
 ```bash
 jupyter notebook
 ```
+> Then click on `TP1.ipynb` to start the first lab!
 
-Cela ouvrira une interface dans votre navigateur où vous pourrez cliquer sur `TP1.ipynb`, `TP2.ipynb` ou `TP3.ipynb` pour les exécuter.
+---
 
-### Docker (Optionnel pour TP2/TP3)
+## 📂 Lab Contents
 
-Le projet contient un `Dockerfile` (référencé dans TP2) pour containeriser l'application. Pour construire et lancer l'image Docker :
+### [TP1: The User Guide to ML Pipelines](TP1.ipynb)
+**Goal:** Predict housing prices using Random Forests.
+*   **Concepts:** Data Wrangling, Feature Engineering, geospatial plotting.
+*   **Key Tech:** Scikit-learn, Pandas, Joblib.
+*   **Outcome:** A serialized Random Forest model ready for deployment.
 
-```bash
-# Construire l'image (assurez-vous d'être dans le dossier contenant le Dockerfile)
-docker build -t tp-ml-app .
+### [TP2: Advanced Regression & MLOps](TP2.ipynb)
+**Goal:** Master regularization and model serving.
+*   **Concepts:** Bias-Variance Tradeoff, Ridge vs Lasso (L1/L2), MLflow tracking.
+*   **Key Tech:** Docker, MLflow, Flask.
+*   **Outcome:** A Dockerized API serving your regression model.
 
-# Lancer le conteneur
-docker run -p 5000:5000 tp-ml-app
+### [TP3: Unsupervised Intelligence](TP3.ipynb)
+**Goal:** Discover hidden patterns in dataset.
+*   **Concepts:** K-Means, Gaussian Mixture Models (GMM), t-SNE & PCA visualization.
+*   **Key Tech:** Scikit-learn, Seaborn.
+*   **Outcome:** Comparison of clustering techniques and dimensionality reduction plots.
+
+### [TP4: Medical Computer Vision](TP4.ipynb)
+**Goal:** Detect pathologies in Chest X-Rays using Deep Learning.
+*   **Concepts:** Convolutional Neural Networks (CNNs), Transfer Learning (ResNet), XAI (Grad-CAM).
+*   **Key Tech:** PyTorch, Torchvision, ONNX.
+*   **Outcome:** An interpretable Deep Learning model exported for edge deployment.
+
+---
+
+## 🛠 Project Structure
+
+```text
+.
+├── TP[1-4].ipynb       # The main lab notebooks (Code & Instructions)
+├── requirements.txt    # List of all python library dependencies
+├── Dockerfile          # For containerizing the TP2 model
+├── *.pkl / *.onnx      # Saved trained models (Outputs)
+├── *.png / *.pdf       # Visualizations and reports (Outputs)
+└── mlruns/             # Directory containing MLflow experiment logs
 ```
 
-## Technologies Utilisées
+## ❓ FAQ & Troubleshooting
 
-*   **Langage** : Python
-*   **Bibliothèques Principales** :
-    *   `numpy`, `pandas` : Manipulation de données.
-    *   `matplotlib`, `seaborn` : Visualisation.
-    *   `scikit-learn` : Modélisation (Régression, Clustering).
-    *   `mlflow` : Tracking d'expériences et gestion du cycle de vie ML.
-    *   `joblib` : Sérialisation des modèles.
+**Q: I get a "ModuleNotFoundError".**
+A: Make sure you activated your virtual environment (`source .venv/bin/activate`) and ran `pip install -r requirements.txt`.
+
+**Q: Plots are not showing.**
+A: Ensure you run the cell `%matplotlib inline` or `plt.show()` if it's not automatically displaying.
+
+**Q: How do I stop Jupyter?**
+A: Press `Ctrl+C` in your terminal.
